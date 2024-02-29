@@ -1,0 +1,39 @@
+.todo-container {
+  width: 4øøpx;
+  margin: auto;
+  padding: 20px;
+  border: lpx solid •ttccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.todo-form {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.todo—form input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: Ipx solid #ccc;
+  border-radius: 5px;
+}
+
+.todo—list input[type="checkbox"] {
+  margin-right: 10px;
+}
+.todo-list span {
+  flex: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.remove—button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

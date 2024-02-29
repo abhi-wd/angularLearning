@@ -1,0 +1,1 @@
+ngOnChange only applicable on component with input properties
