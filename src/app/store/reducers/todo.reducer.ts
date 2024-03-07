@@ -1,22 +1,18 @@
 import { createReducer, on } from "@ngrx/store";
-import { addTodo, toggleTodo, removeTodo } from "../actions/todo.actions";
-import { Todo } from "../../models/todo,models";
+import { addTodo, toggleTodo, removeTodo, loadTodos } from "../actions/todo.actions";
+import { Todo } from "../../models/todo.models";
 
 export interface TodoState {
     todos: Todo[];
 }
 
 export const initialState: TodoState = {
-    todos: [{
-        id: '1',
-        title: 'Todo 1',
-        completed: false,
-        userId: 1,
-    },]
+    todos: [],
 }
 
 export const TodosReducer = createReducer(
     initialState,
+    on(loadTodos, (state, { todos }) => ({ ...state, todos })),
     on(addTodo, (state, { todo }) => ({
         ...state,
         todos: [...state.todos, todo]

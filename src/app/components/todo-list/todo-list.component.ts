@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Todo } from '../../models/todo,models';
+import { Todo } from '../../models/todo.models';
 import { Store } from '@ngrx/store';
-import { addTodo, toggleTodo, removeTodo } from '../../store/actions/todo.actions';
+import { addTodo, toggleTodo, removeTodo, loadTodos } from '../../store/actions/todo.actions';
 
 
 
@@ -14,7 +14,7 @@ import { addTodo, toggleTodo, removeTodo } from '../../store/actions/todo.action
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss'
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
 
   todos$: Todo[] = [];
   newTodoTitle = "";
@@ -23,6 +23,10 @@ export class TodoListComponent {
     store.select('todos').subscribe((todosState: { todos: Todo[] }) => {
       this.todos$ = todosState.todos;
     })
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadTodos({ todos: this.todos$ }))
   }
 
   addTodo(): void {
